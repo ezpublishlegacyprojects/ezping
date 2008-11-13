@@ -6,7 +6,7 @@ class eZPingType extends eZWorkflowEventType
 
     function eZPingType()
     {
-        $this->eZWorkflowEventType( self::TYPE_PING, ezi18n( 'ezping/event', 'Ping' ) );
+        $this->eZWorkflowEventType( self::TYPE_PING, 'Ping' );
         $this->setTriggerTypes( array( 'content' => array( 'publish' => array( 'after' ) ) ) );
     }
 

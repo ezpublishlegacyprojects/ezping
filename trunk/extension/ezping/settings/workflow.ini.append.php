@@ -2,6 +2,6 @@
 
 [EventSettings]
 ExtensionDirectories[]=ezping
-AvailableEventTypes[]=ezping
+AvailableEventTypes[]=event_ezping
 
 */ ?>

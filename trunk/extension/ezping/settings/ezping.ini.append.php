@@ -2,14 +2,13 @@
 
 [PingSettings]
 UseCronjob=enabled
+LogFile=ping.log
 PingClasses[]
 PingClasses[]=weblog
 
-
-[weblog]
+[weblogPingSettings]
 PingURL[]
 PingURL[]=http://localhost/ping
-
-
+PingURL[]=http://localhost/ping2
 
 */ ?>

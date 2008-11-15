@@ -1,6 +1,7 @@
 <?php /*
 
 [PingSettings]
+UserAgent=eZ Ping extension
 UseCronjob=enabled
 LogFile=ping.log
 ### Add the class identifier of objects that needs a ping to

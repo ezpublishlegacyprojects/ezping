@@ -1,4 +1,24 @@
 <?php
+// Created on: <15-Nov-2008 14:00 damien pobel>
+//
+// SOFTWARE NAME: eZ Ping
+// SOFTWARE RELEASE: 1.0
+// COPYRIGHT NOTICE: Copyright (C) 1999-2008 Damien POBEL
+// SOFTWARE LICENSE: GNU General Public License v2.0
+// NOTICE: >
+//   This program is free software; you can redistribute it and/or
+//   modify it under the terms of version 2.0  of the GNU General
+//   Public License as published by the Free Software Foundation.
+//
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+//
+//   You should have received a copy of version 2.0 of the GNU General
+//   Public License along with this program; if not, write to the Free
+//   Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+//   MA 02110-1301, USA.
 
 class eZPingType extends eZWorkflowEventType
 {
@@ -66,7 +86,15 @@ class eZPingType extends eZWorkflowEventType
 
     static function ping( $url )
     {
-        return ( false !== @file_get_contents( $url ) );
+        $ini = eZINI::instance( 'ezping.ini' );
+        $userAgent = $ini->variable( 'PingSettings', 'UserAgent' );
+        $oldUserAgent = ini_set( 'user_agent', $userAgent );
+        $result = ( false !== @file_get_contents( $url ) );
+        if ( $oldUserAgent !== false )
+        {
+            ini_set( 'user_agent', $oldUserAgent );
+        }
+        return $result;
     }
 }
 
